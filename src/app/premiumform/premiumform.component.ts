@@ -22,7 +22,7 @@ export class PremiumformComponent implements OnInit {
         'dob': new FormControl(null, [Validators.required]),
         'age': new FormControl('0', [Validators.required]),
         'occupation': new FormControl(null , [Validators.required]),
-        'sum': new FormControl(null,[Validators.required])
+        'sum': new FormControl(null,[Validators.required,Validators.pattern(/^[1-9]+[0-9]*$/)])
 
    });
      this.service.getOccupations().subscribe(( response:[] ) => {
@@ -33,8 +33,14 @@ export class PremiumformComponent implements OnInit {
 
   }
   onCalculate(){
-
-    console.log(this.myform.value)
+    if(this.myform.valid){
+      console.log(this.myform.value);
+    }
+   
+    
+  }
+  onChange(){
+    
   }
 
 }
