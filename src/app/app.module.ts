@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PremiumformComponent } from './premiumform/premiumform.component';
 import { ResultformComponent } from './resultform/resultform.component';
 import { DescriptionComponent } from './description/description.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { DescriptionComponent } from './description/description.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

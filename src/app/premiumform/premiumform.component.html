@@ -1,1 +1,40 @@
-<p>premiumform works!</p>
+<div>
+    <h2> Calculate your premium</h2>
+    <div class="form group">
+        <form [formGroup]="myform" (ngSubmit)="onCalculate()">
+            <div class="row">
+                <label>Name</label>
+                <input type="text" formControlName="name"> 
+             </div>
+             <div class="row">
+                 <label>Date of Birth</label>
+                 <input type="date" formControlName="dob"> 
+              </div>
+              <div class="row">
+                 <label>Age</label>
+                 <input type="text" formControlName='age'> 
+              </div>
+              <div class="row">
+                 <label>Occupation</label>
+                 <select formControlName='occupation'>
+                     
+                         <option>Please select</option>
+                         <option>1</option>
+
+                     
+                 </select>
+              </div>
+              <div class="row">
+                <label>Sum insured</label>
+                <input type="text" formControlName='sum'> 
+             </div>
+             <div class="row">
+                <button class="btn btn-success" type="submit" [disabled]="!myform.valid">Calculate</button>
+                <button class="btn btn-danger" type="button">Reset</button>
+             </div>
+            
+        </form>
+
+    </div>
+</div>
+
