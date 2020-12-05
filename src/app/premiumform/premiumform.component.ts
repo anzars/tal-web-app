@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ControlService } from 'src/service/control-service';
+
 
 @Component({
   selector: 'app-premiumform',
@@ -8,20 +11,29 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class PremiumformComponent implements OnInit {
    myform: FormGroup;
-  constructor() { }
+   occupationSubscription: Subscription;
+   occupationList: Array<any>;
+   
+  constructor(private service: ControlService) { }
 
   ngOnInit(): void {
    this.myform = new FormGroup({
-       'name': new FormControl('Enter full name' ,[Validators.required]),
+       'name': new FormControl(null,[Validators.required]),
         'dob': new FormControl(null, [Validators.required]),
         'age': new FormControl('0', [Validators.required]),
         'occupation': new FormControl(null , [Validators.required]),
         'sum': new FormControl(null,[Validators.required])
 
    });
+     this.service.getOccupations().subscribe(( response:[] ) => {
+      console.log( response );
+      this.occupationList = response;
+
+     });
 
   }
   onCalculate(){
+
     console.log(this.myform.value)
   }
 
