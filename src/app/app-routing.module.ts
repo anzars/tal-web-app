@@ -11,8 +11,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent , children: [
   {path: 'description', component: DescriptionComponent},
   {path: 'premium', component: PremiumformComponent},
-  {path: 'result' , component: ResultformComponent},
-  {path: '**' , redirectTo: 'description'}
+  {path: 'result/:factor' , component: ResultformComponent},
+ // {path: '**' , redirectTo: 'description'}
   ]}
 ];
 

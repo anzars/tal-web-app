@@ -10,6 +10,8 @@ import { ResultformComponent } from './resultform/resultform.component';
 import { DescriptionComponent } from './description/description.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ControlService } from 'src/service/control-service';
+import { userdetails } from 'src/Models/userdetails';
+import { userService } from 'src/service/Userservice';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,7 @@ import { ControlService } from 'src/service/control-service';
     HttpClientModule
     
   ],
-  providers: [ControlService],
+  providers: [ControlService, userService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
