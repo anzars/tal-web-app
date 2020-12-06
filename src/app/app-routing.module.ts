@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'description', component: DescriptionComponent},
   {path: 'premium', component: PremiumformComponent},
   {path: 'result/:factor' , component: ResultformComponent},
- // {path: '**' , redirectTo: 'description'}
+  {path: '**' , redirectTo: 'description'}
   ]}
 ];
 

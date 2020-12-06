@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResultformComponent } from './resultform.component';
+import {RouterModule} from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ResultformComponent', () => {
   let component: ResultformComponent;
@@ -8,7 +10,8 @@ describe('ResultformComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResultformComponent ]
+      declarations: [ ResultformComponent ],
+      imports: [RouterTestingModule],
     })
     .compileComponents();
   }));
@@ -19,7 +22,9 @@ describe('ResultformComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the app', () => {
+    
     expect(component).toBeTruthy();
   });
+  
 });

@@ -1,21 +1,29 @@
+<app-review *ngIf="apiError" (close)="onCloseError()"></app-review>
 <div>
     <h2 class="text-white"> Calculate your premium</h2>
     <div class="form group mt-4 ">
         <form [formGroup]="myform" (ngSubmit)="onCalculate()"> 
             <div class="row mb-4 ">
                <div class="control-label col-md-2">
-                <label class="text-light">Name</label>
+                <label class="text-light h5">Name</label>
                </div>
                 <div class="control-label col-md-4">
                 <input type="text" formControlName="name" class="form-control"> 
+
+                <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('name').valid && myform.get('name').touched">Name is required.</p>
                </div>
              </div>
+            
+             
+
+             
              <div class="row mb-4">
                <div class="control-label col-md-2">
                  <label class="text-light">Date of Birth</label>
                </div>
                  <div class="control-label col-md-4">
-                 <input type="date" formControlName="dob" class="form-control" (change)="calculateDob()"> 
+                 <input type="date" formControlName="dob" class="form-control" (change)="calculateDob()" > 
+                 <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('dob').valid && myform.get('dob').touched">Date of Birth is required.</p>
                </div>
               </div>
               <div class="row mb-4">
@@ -31,10 +39,12 @@
               <div class="row mb-4">
                  <div class="control-label col-md-2">
                     <label class="text-light">Sum insured</label>
+                   
                   </div>
                   
                 <div class="col-md-4">
                   <input type="number" formControlName='sum' class="form-control"> 
+                  <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('sum').valid && myform.get('sum').touched">Sum insured is required.</p>
                 </div>
                 
              </div>
@@ -51,6 +61,7 @@
 
                    
                </select>
+               <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('occupation').valid && myform.get('occupation').touched">Occupation is required.</p>
             </div>
             </div>
              <div class="row mb-4">

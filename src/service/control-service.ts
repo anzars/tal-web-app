@@ -9,10 +9,10 @@ constructor(private http: HttpClient ,private userservice: userService ) {
 
 }
 getOccupations() {
-     return this.http.get('http://localhost:5000/api/v1/ratings/Occupation', {responseType: 'json'});
+     return this.http.get('/Occupation', {responseType: 'json'});
    }
 getRating(Occupation: string ){
-   return this.http.get('http://localhost:5000/api/v1/ratings/rating',{
+   return this.http.get('/rating',{
       params: new HttpParams().set('occupation', Occupation),
       responseType: 'json',
        } ).pipe(map( (data:any) =>{
