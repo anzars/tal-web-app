@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,15 +8,21 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./resultform.component.css']
 })
 export class ResultformComponent implements OnInit {
-
-  constructor(private activatedroute: ActivatedRoute,private router: Router) { }
-  premium: number;
+  
+  @ViewChild('inp') child: HTMLElement;
+  constructor(private activatedroute: ActivatedRoute,private router: Router, private currencyPipe: CurrencyPipe) { }
+  premium: any;
   ngOnInit(): void {
    this.activatedroute.params.subscribe((params) =>{
     this.premium = params['factor']; 
+    
+    this.premium = this.currencyPipe.transform(this.premium, 'AUD');
     console.log(params);
    } )
   }
+  
+
+
   onBack(){
     console.log(this.activatedroute);
     this.router.navigate(['../../premium'] , { relativeTo: this.activatedroute });

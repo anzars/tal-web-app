@@ -14,6 +14,8 @@ import { userdetails } from 'src/Models/userdetails';
 import { userService } from 'src/service/Userservice';
 import { ReviewComponent } from './review/review.component';
 import { interceptorservice } from 'src/service/interceptorservice';
+import { CurrencydirectiveDirective } from './currencydirective.directive';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { interceptorservice } from 'src/service/interceptorservice';
     PremiumformComponent,
     ResultformComponent,
     DescriptionComponent,
-    ReviewComponent
+    ReviewComponent,
+    CurrencydirectiveDirective
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { interceptorservice } from 'src/service/interceptorservice';
                 useClass: interceptorservice,
                 multi: true,
               } ,
-              ControlService, userService],
+              ControlService, userService,CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
