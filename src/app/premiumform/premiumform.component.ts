@@ -24,6 +24,9 @@ export class PremiumformComponent implements OnInit {
    subjectError= new Subject<any>();
    subscriptionError: Subscription;
    closeSubscription: Subscription;
+   today: string;
+
+
    
   constructor(private service: ControlService, 
               private userservice:userService,
@@ -31,14 +34,14 @@ export class PremiumformComponent implements OnInit {
               private activatedroute: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    
+    this.setMaxDate();
     
    this.myform = new FormGroup({
        'name': new FormControl(null,[Validators.required]),
         'dob': new FormControl(null, [Validators.required]),
-        'age': new FormControl(0, [Validators.required]),
+        'age': new FormControl(null, [Validators.required]),
         'occupation': new FormControl(null , [Validators.required]),
-        'sum': new FormControl(null,[Validators.required, Validators.pattern(/^[1-9]+[0-9]*$/)])
+        'sum': new FormControl(null,[Validators.required])
 
    });
       this.subscriptionError = this.subjectError.subscribe((error) => {
@@ -58,11 +61,43 @@ export class PremiumformComponent implements OnInit {
 
   }
   calculateDob(){
-    console.log(this.myform.get('name'));
+   if( this.Validatedate() === true){
+
     let selectedDate= new Date(this.myform.get('dob').value); 
     let timeDiff = Math.abs(Date.now() - selectedDate.getTime());
     let age = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
      this.myform.patchValue({'age': age});
+   }
+  }
+  Validatedate(): boolean{
+    let tooday = this.myform.get('dob').value;
+    
+    let yyyy = tooday.split('-')[0];
+    console.log(parseFloat(yyyy)>2020);
+    console.log(yyyy);
+    if(parseFloat(yyyy)>2020 || parseFloat(yyyy)<1950){
+      return false;
+    }
+      else
+      {
+        return true;
+      }
+    
+  }
+  setMaxDate(){
+    let tooday = new Date();
+    let dd: any = tooday.getDate();
+    let mm: any = tooday.getMonth()+1; //January is 0!
+    let yyyy = tooday.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+this.today = yyyy+'-'+mm+'-'+dd;
+
   }
 
   onCalculate(){

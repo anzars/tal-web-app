@@ -10,7 +10,7 @@
                 <div class="control-label col-md-4">
                 <input type="text" formControlName="name" class="form-control"> 
 
-                <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('name').valid && myform.get('name').touched">Name is required.</p>
+                <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('name').valid && myform.get('name').touched">A name is required.</p>
                </div>
              </div>
             
@@ -22,9 +22,10 @@
                  <label class="text-light">Date of Birth</label>
                </div>
                  <div class="control-label col-md-4">
-                 <input type="date" formControlName="dob" class="form-control" (change)="calculateDob()" > 
-                 <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('dob').valid && myform.get('dob').touched">Date of Birth is required.</p>
-               </div>
+                 <input type="date" formControlName="dob" class="form-control" (change)="calculateDob()" [max]="today" > 
+                 <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('dob').valid && myform.get('dob').touched">A valid date of birth is required.</p>
+               
+                </div>
               </div>
               <div class="row mb-4">
                  <div class="control-label col-md-2">
@@ -33,7 +34,8 @@
                  <div class="control-label col-md-4">
                  
                  <input type="text" formControlName='age' disabled="true" class="form-control"> 
-               </div>
+                 <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('age').valid && myform.get('dob').touched">A valid date of birth is required.</p>
+                </div>
               </div>
              
               <div class="row mb-4">
@@ -43,8 +45,8 @@
                   </div>
                   
                 <div class="col-md-4">
-                  <input type="number" formControlName='sum' class="form-control"> 
-                  <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('sum').valid && myform.get('sum').touched">Sum insured is required.</p>
+                  <input type="text" formControlName='sum' appCurrencydirective maxDigits="9"  class="form-control"> 
+                  <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('sum').valid && myform.get('sum').touched">The sum insured is required.</p>
                 </div>
                 
              </div>
@@ -61,14 +63,15 @@
 
                    
                </select>
-               <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('occupation').valid && myform.get('occupation').touched">Occupation is required.</p>
+               <p class="text-danger font-weight-normal h5 bg-warning mt-2 " *ngIf="!myform.get('occupation').valid && myform.get('occupation').touched">An occupation is required.</p>
             </div>
             </div>
              <div class="row mb-4">
-                <div class="col-md-1">
+                <div class="col-md-1 mr-4">
                    <button class="btn btn-success" type="submit" [disabled]="!myform.valid" #Calulate>Calculate</button>
                   </div>
-                <div class="col-md-1">
+                 
+                <div class="col-md-1 ml-4">
                   <button class="btn btn-danger" (click)="myform.reset()" type="button">Reset</button>
                 </div>
                
