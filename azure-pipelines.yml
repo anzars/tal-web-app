@@ -28,5 +28,5 @@ steps:
     WebAppName: 'anzarpipeline'
     deployToSlotOrASE: true
     ResourceGroupName: 'testpipelinerg'
-    SlotName: 'production'
+    SlotName: 
     packageForLinux: 'dist/'
