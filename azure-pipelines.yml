@@ -20,3 +20,13 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(c560bf1a-4936-44df-a105-9a4cb9b0d217)'
+    appType: 'webApp'
+    WebAppName: 'anzarpipeline'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'testpipelinerg'
+    SlotName: 'production'
+    packageForLinux: 'dist/'
