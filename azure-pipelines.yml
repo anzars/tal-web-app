@@ -14,22 +14,20 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
+   
 
 - script: |
     npm install -g @angular/cli
     npm install
     ng build --prod
   displayName: 'npm install and build'
-- task: CopyFiles@2
+- task: PublishPipelineArtifact@1
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: 'dist/'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: 'angular'
+    publishLocation: 'pipeline'
+
+
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
