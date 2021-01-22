@@ -32,6 +32,6 @@ steps:
     packageForLinux: 'dist/tal-web-app/'
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '/app'
+    PathtoPublish: ''
     ArtifactName: 'dist'
     publishLocation: 'Container'
