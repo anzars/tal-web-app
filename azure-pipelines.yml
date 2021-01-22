@@ -30,3 +30,8 @@ steps:
     ResourceGroupName: 'testpipelinerg'
     SlotName: 
     packageForLinux: 'dist/tal-web-app/'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'dist'
+    publishLocation: 'Container'
