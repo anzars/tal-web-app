@@ -26,6 +26,11 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'angular'
     publishLocation: 'pipeline'
+- task: DownloadPipelineArtifact@2
+  inputs:
+    buildType: 'current'
+    artifactName: 'angular'
+    targetPath: '$(Pipeline.Workspace)'
 
 
 - task: AzureRmWebAppDeployment@4
